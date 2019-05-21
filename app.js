@@ -10,17 +10,50 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 const app = express();
 
+var posts = [];
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
+app.get("/", function(req,res){
+  res.render("home",{
+    homeStartingContentEJS: homeStartingContent,
+    postsEJS: posts,
+  });
+})
 
+app.get("/about", function(req,res){
+  res.render("about", {
+    aboutContentEJS: aboutContent,
+  })
+})
 
+app.get("/contact", function(req,res){
+  res.render("contact", {
+    contactContentEJS: contactContent,
+  })
+})
 
+app.get("/compose", function(req,res){
+  res.render("compose");
+})
 
+app.post("/compose", function(req,res){
+  const post = {
+    title: req.body.blogTitle,
+    content: req.body.blogPost,
+  };
+  posts.push(post);
+  res.redirect("/");
+  //console.log(posts);
+  //console.log(req.body.newBlog);
+})
 
-
+app.get("/posts/:topic", function(req,res) {
+  console.log(req.params.topic);
+})
 
 
 

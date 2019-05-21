@@ -1,0 +1,12 @@
+<%- include("partials/header") -%>
+
+<h1>Home</h1>
+<p><%= homeStartingContentEJS %></p>
+
+<% for (let i = 0; i < postsEJS.length; i++) { %>
+  <h1><%= postsEJS[i].title %></h1>
+  <p><%= postsEJS[i].content %></p>
+<% } %>
+
+
+<%- include("partials/footer") -%>

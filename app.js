@@ -52,7 +52,20 @@ app.post("/compose", function(req,res){
 })
 
 app.get("/posts/:topic", function(req,res) {
-  console.log(req.params.topic);
+  for (let i = 0; i < posts.length; i++) {
+    let urlTitle = posts[i].title.replace(" ", "-").toLowerCase();
+    if (urlTitle === req.params.topic) {
+      res.render("post", {
+        postTitleEJS: posts[i].title,
+        postContentEJS: posts[i].content,
+      });
+      //console.log("Match Found!");
+      break;
+    } else {
+      console.log("No Found");
+    }
+  }
+  //console.log(req.params.topic);
 })
 
 

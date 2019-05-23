@@ -62,7 +62,7 @@ app.get("/posts/:topic", function(req,res) {
       //console.log("Match Found!");
       break;
     } else {
-      console.log("No Found");
+      //console.log("No Found");
     }
   }
   //console.log(req.params.topic);

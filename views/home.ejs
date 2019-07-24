@@ -7,7 +7,7 @@
   <h1><%= postsEJS[i].title %></h1>
   <p>
     <%= postsEJS[i].content.slice(0,100) + "... " %>
-    <a href="<%= "/posts/" + postsEJS[i].title.replace(" ","-").toLowerCase()%>">Read More</a>
+    <a href="<%= "/posts/" + postsEJS[i]._id%>">Read More</a>
   </p>
 <% } %>
 
